@@ -5,4 +5,4 @@ require recipes-core/images/rpi-test-image.bb
 
 IMAGE_FEATURES:append = " ssh-server-openssh x11-base"
 
-IMAGE_INSTALL:append = " kernel-modules openssh openssh-sftp-server xserver-xorg xinit matchbox-terminal matchbox-wm xf86-video-fbdev"
+IMAGE_INSTALL:append = " kernel-modules openssh openssh-sftp-server xserver-xorg xinit matchbox-terminal matchbox-wm xf86-video-fbdev example"

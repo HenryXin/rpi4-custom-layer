@@ -1,0 +1,14 @@
+[Unit]
+Description=USB flash drive monitor (prints 1 when drive on special port, else 0)
+After=sysinit.target local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/usb-flash-monitor.py
+Restart=on-failure
+RestartSec=2
+# Optional: set which USB port to watch (e.g. 1-1 for first port on RPi)
+# Environment=USB_FLASH_PORT=1-1
+
+[Install]
+WantedBy=multi-user.target
