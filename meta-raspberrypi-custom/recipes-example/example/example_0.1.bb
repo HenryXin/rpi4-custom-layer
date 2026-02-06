@@ -5,11 +5,12 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 inherit systemd
 
-RDEPENDS:${PN} = "python3-core"
+RDEPENDS:${PN} = "python3-core python3-cryptography"
 
 SRC_URI = " \
     file://usb-flash-monitor.py \
     file://usb-flash-monitor.service \
+    file://public_key.pem \
 "
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
@@ -21,11 +22,15 @@ do_install() {
 
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${S}/usb-flash-monitor.service ${D}${systemd_system_unitdir}/usb-flash-monitor.service
+
+    install -d ${D}${sysconfdir}/usb-validator
+    install -m 0644 ${S}/public_key.pem ${D}${sysconfdir}/usb-validator/public_key.pem
 }
 
 FILES:${PN} = " \
     ${bindir}/usb-flash-monitor.py \
     ${systemd_system_unitdir}/usb-flash-monitor.service \
+    ${sysconfdir}/usb-validator/public_key.pem \
 "
 
 SYSTEMD_SERVICE:${PN} = "usb-flash-monitor.service"
