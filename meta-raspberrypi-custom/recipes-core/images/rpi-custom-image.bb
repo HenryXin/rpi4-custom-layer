@@ -3,7 +3,7 @@ DESCRIPTION = "A custom image for Raspberry Pi 4 with basic packages"
 
 require recipes-core/images/rpi-test-image.bb
 
-WKS_FILE = "sdimage-raspberrypi-custom.wks"
+WKS_FILE = "sdimage-raspberrypi4-custom.wks"
 
 IMAGE_FEATURES:append = " ssh-server-openssh x11-base"
 
